@@ -23,12 +23,45 @@ git clone https://github.com/Falconmx1/Sqlmxmap.git
 cd Sqlmxmap
 pip install -r requirements.txt
 
-🎯 Uso básico
-bash
+## 🚀 Modos de uso avanzado
 
-python sqlmxmap.py -u "http://test.com/page.php?id={{id}}"
+### Enumerar bases de datos
+```bash
+python sqlmxmap.py -u "http://test.com/page.php?id=1" --dbs -v
 
-🧪 Ejemplo
-bash
+Enumerar tablas
+python sqlmxmap.py -u "http://test.com/page.php?id=1" --tables nombre_db -vv
 
-python sqlmxmap.py -u "http://testphp.vulnweb.com/artists.php?artist={{id}}" -p artist
+Volcar tabla completa
+python sqlmxmap.py -u "http://test.com/page.php?id=1" --dump users --stealth
+
+Modo POST con evasión de WAF
+python sqlmxmap.py -u "http://test.com/login.php" -p username -m POST -d "username=admin&password=123" --waf-evasion -v
+
+Detectar motor de DB
+python sqlmxmap.py -u "http://test.com/page.php?id=1" --detect-db -v
+
+Modo completo (stealth + verboso)
+python sqlmxmap.py -u "http://test.com/page.php?id=1" --dbs --tables mysql --dump users --stealth -vv
+
+
+## 🔥 Características implementadas
+
+| Feature | Estado | Descripción |
+|---------|--------|-------------|
+| Extracción DBs | ✅ | `--dbs` |
+| Enumeración tablas | ✅ | `--tables` |
+| Volcado de datos | ✅ | `--dump` |
+| Modo verboso | ✅ | `-v` / `-vv` |
+| POST requests | ✅ | `-m POST -d` |
+| Evasión WAF | ✅ | `--waf-evasion` |
+| Modo stealth | ✅ | `--stealth` |
+| Detección DB engine | ✅ | `--detect-db` |
+
+## 📦 Instalación rápida
+
+```bash
+git clone https://github.com/Falconmx1/Sqlmxmap.git
+cd Sqlmxmap
+pip install -r requirements.txt
+python sqlmxmap.py -h
